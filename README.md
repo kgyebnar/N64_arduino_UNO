@@ -1,16 +1,17 @@
-#N64 arduino UNO converter...
+# N64 arduino UNO converter...
 This is the modification of unforgiven512s code, i had some difficulities to using with the cheap chinese N64 controller.
-The A button was completly "flickering" state no metter what i did... i spent couple of hours to identify the root couse of the problem.
+The "A" button was completly "flickering" state no metter what i did...this completely ruining the usability of the controller. 
+I spent couple of hours to identify the root couse of the problem...looks like the controller sending "garbage" before the first command.
 
-Finally i found the solution: the result was to send some initialising command before we start to talk with the N64 controllr (sending 0x00 to the controller before we doing anything else...)
-After this mod the code above works perfectly with 2 controllers.
+Finally i found the solution: sending some initialising command before we start to talk with the N64 controller (sending 0x00 to the controller before we doing anything else...)
+After this mod the code below works perfectly with 2 controllers.
 
 
 This is the Magic:
 
   // Initialize the gamecube controller by sending it a null byte.
   // This is unnecessary for a standard controller, but is required for the
-  // Wavebird.
+  // Chinese controller
   unsigned char initialize = 0x00;
   noInterrupts();
   N64_send(&initialize, 1);
