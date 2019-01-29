@@ -1,5 +1,5 @@
 # N64 arduino UNO converter...
-This is the modification of unforgiven512s code, i had some difficulities to using with the cheap chinese N64 controller.
+This is the modification of unforgiven512s code, i had some difficulities to using the cheap chinese N64 controller.
 The "A" button was completly "flickering" state no metter what i did...this completely ruining the usability of the controller. 
 I spent couple of hours to identify the root couse of the problem...looks like the controller sending "garbage" before the first command.
 
