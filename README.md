@@ -9,15 +9,12 @@ After this mod the code below works perfectly with 2 controllers.
 
 This is the Magic:
 
-  // Initialize the gamecube controller by sending it a null byte.
-  // This is unnecessary for a standard controller, but is required for the
-  // Chinese controller
   unsigned char initialize = 0x00;
   noInterrupts();
   N64_send(&initialize, 1);
   N64_send2(&initialize, 1);
 
-
+everything else is still the same...
 
 # n64-arduino
 Plug two N64 controllers to an Arduino and turn your Arduino in a USB HID joystick! Play your favourite games on the pc with the best controller ever!
