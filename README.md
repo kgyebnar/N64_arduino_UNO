@@ -1,3 +1,23 @@
+#N64 arduino UNO converter...
+This is the modification of unforgiven512s code, i had some difficulities to using with the cheap chinese N64 controller.
+The A button was completly "flickering" state no metter what i did... i spent couple of hours to identify the root couse of the problem.
+
+Finally i found the solution: the result was to send some initialising command before we start to talk with the N64 controllr (sending 0x00 to the controller before we doing anything else...)
+After this mod the code above works perfectly with 2 controllers.
+
+
+This is the Magic:
+
+  // Initialize the gamecube controller by sending it a null byte.
+  // This is unnecessary for a standard controller, but is required for the
+  // Wavebird.
+  unsigned char initialize = 0x00;
+  noInterrupts();
+  N64_send(&initialize, 1);
+  N64_send2(&initialize, 1);
+
+
+
 # n64-arduino
 Plug two N64 controllers to an Arduino and turn your Arduino in a USB HID joystick! Play your favourite games on the pc with the best controller ever!
 
@@ -65,6 +85,8 @@ cp mupen64plus.cnf ~/.config/mupen64plus/
 
 
 # Credits
+All credits to unforgiven512
+
 This project is an extension of [MickMad](https://github.com/MickMad)'s awesome [project](https://github.com/MickMad/N64-To-USB)
 
 More awesome people this project is built upon
